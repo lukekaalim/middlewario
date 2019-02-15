@@ -1,0 +1,27 @@
+{
+  "name": "middlewario",
+  "version": "1.0.0",
+  "description": "Redux middleware",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.esm.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukekaalim/middlewario.git"
+  },
+  "keywords": [
+    "Redux",
+    "Middleware"
+  ],
+  "author": "lukekaalim@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lukekaalim/middlewario/issues"
+  },
+  "homepage": "https://github.com/lukekaalim/middlewario#readme",
+  "devDependencies": {
+    "rollup": "^1.1.2"
+  }
+}
