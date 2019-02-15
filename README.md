@@ -31,7 +31,7 @@ Model side effects as easily as you like.
 ## API
 
 ```javascript
-(wareConstructors) => (getState, dispatch) => {
+(wareConstructors) => ({ getState, dispatch }) => {
   const wares = wareConstructors
     .map(wereConstructor => wereConstructor(dispatch, getState));
 

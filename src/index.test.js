@@ -8,9 +8,9 @@ describe('middlewario', () => {
     const mockNextAction = { type: 'NEXT_ACTION' };
     const mockNext = jest.fn(() => mockNextAction);
     const warioware = middlewario([testWareConstructor]);
-    const connectedWare = warioware('mockStore', 'mockDispatch')(mockNext);
+    const connectedWare = warioware({ getState: 'mockGetState', dispatch: 'mockDispatch' })(mockNext);
 
-    expect(testWareConstructor.mock.calls[0]).toContain('mockStore');
+    expect(testWareConstructor.mock.calls[0]).toContain('mockGetState');
     expect(testWareConstructor.mock.calls[0]).toContain('mockDispatch');
 
     const action = { type: 'EXAMPLE_ACTION' };
