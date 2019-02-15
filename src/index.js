@@ -1,7 +1,7 @@
 // @flow
 
 export const middlewario = (wareConstructors) => (getState, dispatch) => {
-  const wares = wareConstructors.map(wereConstructor => wereConstructor(getState, dispatch));
+  const wares = wareConstructors.map(wereConstructor => wereConstructor(dispatch, getState));
 
   return (next) => (action) => {
     wares.forEach(ware => ware(action));

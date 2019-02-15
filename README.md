@@ -33,7 +33,7 @@ Model side effects as easily as you like.
 ```javascript
 (wareConstructors) => (getState, dispatch) => {
   const wares = wareConstructors
-    .map(wereConstructor => wereConstructor(getState, dispatch));
+    .map(wereConstructor => wereConstructor(dispatch, getState));
 
   return (next) => (action) => {
     wares.forEach(ware => ware(action));
@@ -62,7 +62,9 @@ Seriously just look at the source code for a how-to-use.
 
 ## Advanced
 
-### Neat central place to put your hydration logic.
+### Hydration
+
+This is a neat place to put your hydration logic, especially if it sits inside your app rather than around it.
 
 ```javascript
 const hydrator = async (action, getState) => {
@@ -104,4 +106,29 @@ const mapDispatchToProps = dispatch => {
 };
 
 const ConnectedApp = connect(null, mapDispatchToProps)(App);
+```
+
+### Cached Services
+
+Wario remembers grudges. And other things that need to be persisted outside of the serializeable state, like caches.
+
+```javascript
+const buildService = () => {
+  getAsyncData: (path) => fetch(`example.com/${path}`)
+    .then(response => response.json())
+    .then(body => body.data),
+};
+
+const cachedService = (dispatch) => {
+  const { getAsyncData } = buildService();
+  const cache = new Map();
+
+  return async (action) => {
+    if (action.type === 'SERVICE_REQUESTED') {
+      const hasCache = cache.has(action.path);
+      const data = hasCache ? cache.get(data) : await getAsyncData(action.path);
+      dispatch({ type: 'SERVICE_SUCCESS', data });
+    }
+  };
+};
 ```
