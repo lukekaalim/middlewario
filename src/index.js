@@ -5,11 +5,11 @@ export const middlewario = (wareConstructors) => (getState, dispatch) => {
 
   return (next) => (action) => {
     wares.forEach(ware => ware(action));
-    next(action);
+    return next(action);
   };
 };
 
-export const middlewaluigi = (wares) => (getState, dispatch) => next => dispatch => {
+export const middlewaluigi = (wares) => (getState, dispatch) => next => action => {
   wares.map(ware => ware(action, getState).then(action => action && dispatch(action)));
-  next(action);
+  return next(action);
 };

@@ -22,6 +22,11 @@
   },
   "homepage": "https://github.com/lukekaalim/middlewario#readme",
   "devDependencies": {
-    "rollup": "^1.1.2"
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "jest": "^24.1.0",
+    "rollup": "^1.1.2",
+    "rollup-plugin-babel": "^4.3.2"
   }
 }
