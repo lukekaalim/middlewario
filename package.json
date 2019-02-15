@@ -1,6 +1,6 @@
 {
   "name": "middlewario",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Redux middleware",
   "main": "dist/index.umd.js",
   "module": "dist/index.esm.js",
